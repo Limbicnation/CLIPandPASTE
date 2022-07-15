@@ -23,6 +23,48 @@ The source code and generated images are released under the [CC BY-SA license](h
 - M. Grootendorst, KeyBERT: Minimal keyword extraction with BERT (2020)
 - E. Riba, D. Mishkin, D. Ponsa, E. Rublee, and G. Bradski, Kornia: an Open Source Differentiable Computer Vision Library for PyTorch (2020), Winter Conference on Applications of Computer Vision
 
+# Installation for local runs
+
+Prerequirements:
+make sure you have [CUDA](https://developer.nvidia.com/cuda-downloads) and [Aanaconda](https://www.anaconda.com/products/distribution) installed. This code runs on a Ubuntu 20.04 system with an NVIDIA Geforce graphics card.
+
+Download:
+```
+https://github.com/Limbicnation/CLIPandPASTE.git
+cd CLIPandPASTE
+```
+
+## Conda Virtual Environment
+```
+conda create --name CLIPandPASTE python=3.9
+conda activate CLIPandPASTE
+```
+Pip install torch and torchvision
+```
+pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
+```
+```
+pip install torch
+pip install torchvision
+```
+
+Install notebook
+
+```
+conda install -c conda-forge notebook
+```
+Install Jupyter
+
+```
+pip install jupyter
+```
+
+I don't remember what this command was for, but I got an error when I didn't use it.
+
+```
+pip install --upgrade --no-cache-dir gdown
+```
+
 ## Citation
 To cite this repository:
 
