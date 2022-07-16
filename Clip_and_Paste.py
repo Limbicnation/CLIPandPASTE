@@ -252,10 +252,10 @@ all_images = []
 all_files = []
 
 
-prompt = "robot engineer working in a factory to design the next version of himself" #@param {type:"string"}
+prompt = "Portrait of a young man with a network of neural connections" #@param {type:"string"}
 prompt = prompt.lower()
 num_keywords = 10
-image_size = 256
+image_size = 1024
 """
 extractor.load_document(input=prompt, language='en')
 extractor.candidate_selection(pos={'NOUN', 'PROPN', 'ADJ', 'VERB'})
@@ -375,7 +375,7 @@ import glob
 file_path_list = glob.glob("./content/custom_images/*.jpg")
 for file_path in file_path_list:
       img = Image.open(file_path)
-      img = img.convert(mode="RGBA")
+      img = img.convert(mode="RGB")
       all_images.append(img)
       all_files.append(file_path)
 print("num total images", len(all_images))
@@ -403,7 +403,7 @@ fig=plt.figure(figsize=(columns*5, rows*5))
 for i in range(1, columns*rows + 1):
   file_name = all_files[image_indices[i-1]]
   img = Image.open(file_name)
-  img = img.convert(mode="RGBA")
+  img = img.convert(mode="RGB")
   fig.add_subplot(rows, columns, i)
   plt.margins(y=10)
   plt.imshow(img)
