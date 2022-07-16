@@ -255,6 +255,7 @@ all_files = []
 prompt = "penguins skiing down a snowy mountain" #@param {type:"string"}
 prompt = prompt.lower()
 num_keywords = 10
+image_size = 256
 """
 extractor.load_document(input=prompt, language='en')
 extractor.candidate_selection(pos={'NOUN', 'PROPN', 'ADJ', 'VERB'})
@@ -361,7 +362,7 @@ print("num total images", num_openimages+num_wikiimages)
 # End Wiki Media and Open Images
 
 input_resolution = 224
-image_features = torch.empty((0, 512))
+image_features = torch.empty((0, image_size))
 
 preprocess = Compose([
     Resize(input_resolution, interpolation=InterpolationMode.BICUBIC),
@@ -566,10 +567,10 @@ for i in range(num_images):
 
     part_PIL = Image.fromarray(np.uint8(cutout_image_np*255))
     w, h = part_PIL.size
-    if w > h and w > 512:
-      part_pil = part_PIL.resize((512, int(h*512/w)), Image.BICUBIC)
-    elif h > 512:
-      part_pil = part_PIL.resize((int(w*512/h), 512), Image.BICUBIC)
+    if w > h and w > image_size:
+      part_pil = part_PIL.resize((image_size, int(h*image_size/w)), Image.BICUBIC)
+    elif h > image_size:
+      part_pil = part_PIL.resize((int(w*image_size/h), image_size), Image.BICUBIC)
 
     parts_rgb.append(preprocess_parts(part_PIL))
     mask_PIL = Image.fromarray(np.uint8(cutout_mask_np*255))
