@@ -371,7 +371,7 @@ preprocess = Compose([
 
 # Added this code for using custom images
 import glob
-file_path_list = glob.glob("/content/custom_images/*.jpg")
+file_path_list = glob.glob("./content/custom_images/*.jpg")
 for file_path in file_path_list:
       img = Image.open(file_path)
       img = img.convert(mode="RGB")
