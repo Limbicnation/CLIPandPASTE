@@ -256,7 +256,7 @@ prompt = "penguins skiing down a snowy mountain" #@param {type:"string"}
 prompt = prompt.lower()
 num_keywords = 10
 image_size = 256
-"""
+
 extractor.load_document(input=prompt, language='en')
 extractor.candidate_selection(pos={'NOUN', 'PROPN', 'ADJ', 'VERB'})
 extractor.candidate_weighting()
@@ -314,7 +314,7 @@ for j in range(len(keywords)):
       all_images.append(img)
       all_files.append(file_path)
       num_openimages += 1
-
+  """
   # get the images Wikipedia
   s = requests.Session()
   url = "https://commons.wikimedia.org/w/api.php"
