@@ -252,11 +252,11 @@ all_images = []
 all_files = []
 
 
-prompt = "penguins skiing down a snowy mountain" #@param {type:"string"}
+prompt = "robot engineer working in a factory to design the next version of himself" #@param {type:"string"}
 prompt = prompt.lower()
 num_keywords = 10
 image_size = 256
-
+"""
 extractor.load_document(input=prompt, language='en')
 extractor.candidate_selection(pos={'NOUN', 'PROPN', 'ADJ', 'VERB'})
 extractor.candidate_weighting()
@@ -314,7 +314,7 @@ for j in range(len(keywords)):
       all_images.append(img)
       all_files.append(file_path)
       num_openimages += 1
-  """
+  
   # get the images Wikipedia
   s = requests.Session()
   url = "https://commons.wikimedia.org/w/api.php"
@@ -375,7 +375,7 @@ import glob
 file_path_list = glob.glob("./content/custom_images/*.jpg")
 for file_path in file_path_list:
       img = Image.open(file_path)
-      img = img.convert(mode="RGB")
+      img = img.convert(mode="RGBA")
       all_images.append(img)
       all_files.append(file_path)
 print("num total images", len(all_images))
@@ -403,7 +403,7 @@ fig=plt.figure(figsize=(columns*5, rows*5))
 for i in range(1, columns*rows + 1):
   file_name = all_files[image_indices[i-1]]
   img = Image.open(file_name)
-  img = img.convert(mode="RGB")
+  img = img.convert(mode="RGBA")
   fig.add_subplot(rows, columns, i)
   plt.margins(y=10)
   plt.imshow(img)
